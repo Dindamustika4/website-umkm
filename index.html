@@ -1,29 +1,64 @@
 <!DOCTYPE html>
 <html lang="id">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Kopi Kenangan - Website UMKM</title>
-        <link rel="stylesheet" href="css/style.css" />
-    </head>
-    <body>
-        <main class="page">
-            <header class="hero">
-                <p class="eyebrow">UMKM Pekalongan</p>
-                <h1>Kopi Kenangan</h1>
-                <p>Kopi lokal pilihan untuk belajar, bekerja, dan berdiskusi.</p>
-                <button id="promoButton" type="button">Lihat promo hari ini</button>
-            </header>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kopi Kenangan - Website UMKM</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+    <header class="site-header">
+        <nav class="nav" aria-label="Navigasi utama">
+            <a class="brand" href="index.html">Kopi Kenangan</a>
+            <ul>
+                <li><a aria-current="page" href="index.html">Beranda</a></li>
+                <li><a href="tentang.html">Tentang Kami</a></li>
+                <li><a href="#kontak">Kontak Singkat</a></li>
+            </ul>
+        </nav>
+    </header>
 
-            <section aria-labelledby="produk-title">
-                <h2 id="produk-title">Produk unggulan</h2>
-                <ul class="products">
-                    <li><article>Kopi gula aren - Rp6.000</article></li>
-                    <li><article>Mi Bangladesh - Rp13.000</article></li>
-                    <li><article>Roti bakar keju cokelat, disajikan hangat dengan taburan keju parut dan cokelat leleh, cocok jadi teman ngopi sore - Rp10.000</article></li>
-                </ul>
-            </section>
-        </main>
-        <script src="js/script.js"></script>
-    </body>
+    <main id="konten" class="page">
+        <section class="hero" aria-labelledby="hero-title">
+            <p class="eyebrow">UMKM Pekalongan</p>
+            <h1 id="hero-title">Kopi Kenangan</h1>
+            <p>Kopi lokal pilihan untuk teman belajar, bekerja, dan berdiskusi.</p>
+            <button id="promoButton" type="button">Lihat promo hari ini</button>
+            <img src="assets/images/etalase-kopi.jpg" alt="Foto tiga produk andalan Kopi Kenangan: es kopi gula aren, roti bakar keju cokelat, dan mi Bangladesh" />
+        </section>
+
+        <div class="product-list">
+            <article class="product-card">
+                <h3>Kopi Gula Aren</h3>
+                <p>Aroma karamel yang lebih kompleks dan alami dibanding penggunaan gula putih biasa.</p>
+                <p class="price">Rp16.000</p>
+            </article>
+            <article class="product-card">
+                <h3>Roti Bakar Cokelat Keju</h3>
+                <p>Roti bakar dengan perpaduan keju dan cokelat yang manis, gurih, dan lumer di setiap gigitan.</p>
+                <p class="price">Rp10.000</p>
+            </article>
+            <article class="product-card">
+                <h3>Mi Bangladesh</h3>
+                <p>Hidangan mi berkuah dengan cita rasa gurih, pedas, dan kaya rempah yang menggugah selera.</p>
+                <p class="price">Rp13.000</p>
+            </article>
+        </div>
+
+        <section id="kontak" aria-labelledby="kontak-title">
+            <h2 id="kontak-title">Kontak Singkat</h2>
+            <p>Kopi Kenangan, Jl. Cendrawasih No. 93, Pekalongan, Jawa Tengah.</p>
+            <p>Jam layanan: Senin–Minggu, pukul 09.00–21.00 WIB.</p>
+            <p>
+                <a href="https://wa.me/6289508997130">Hubungi Kopi Kenangan lewat WhatsApp</a>
+            </p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Kopi Kenangan. Data pada halaman ini bersifat dummy.</p>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
 </html>
