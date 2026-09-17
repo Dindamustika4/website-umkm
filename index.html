@@ -14,18 +14,22 @@
             <ul>
                 <li><a aria-current="page" href="index.html">Beranda</a></li>
                 <li><a href="tentang.html">Tentang Kami</a></li>
-                <li><a href="#kontak">Kontak Singkat</a></li>
+                 <li><a href="#kontak">Kontak Singkat</a></li>
+                <li><a href="produk.html">Produk</a></li>
+                <li><a href="galeri.html">Galeri</a></li>
             </ul>
         </nav>
     </header>
-
     <main id="konten" class="page">
         <section class="hero" aria-labelledby="hero-title">
             <p class="eyebrow">UMKM Pekalongan</p>
             <h1 id="hero-title">Kopi Kenangan</h1>
             <p>Kopi lokal pilihan untuk teman belajar, bekerja, dan berdiskusi.</p>
             <button id="promoButton" type="button">Lihat promo hari ini</button>
-            <img src="assets/images/etalase-kopi.jpg" alt="Foto tiga produk andalan Kopi Kenangan: es kopi gula aren, roti bakar keju cokelat, dan mi Bangladesh" />
+            <figure>
+                <img src="assets/images/etalase.png" alt="Mi Bangladesh dengan telur, kerupuk, dan es kopi Kenangan disajikan di atas tikar piknik" />
+                <figcaption>Produk unggulan Kopi Kenangan, siap menemani harimu.</figcaption>
+            </figure>
         </section>
 
         <div class="product-list">
@@ -45,6 +49,15 @@
                 <p class="price">Rp13.000</p>
             </article>
         </div>
+        <section aria-labelledby="audio-title">
+    <h2 id="audio-title">Nada Penanda Kedai</h2>
+    <p id="audio-note">Dengarkan nada penanda dari Kedai Kopi Kenangan.</p>
+    <audio controls loop aria-describedby="audio-note">
+        <source src="assets/audio/sound.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung pemutar audio.
+    </audio>
+    <p class="audio-credit">Musik oleh @massobeats (YouTube), digunakan dengan izin bebas pakai.</p>
+</section>
 
         <section id="kontak" aria-labelledby="kontak-title">
             <h2 id="kontak-title">Kontak Singkat</h2>
@@ -55,7 +68,6 @@
             </p>
         </section>
     </main>
-
     <footer class="site-footer">
         <p>&copy; 2026 Kopi Kenangan. Data pada halaman ini bersifat dummy.</p>
     </footer>
