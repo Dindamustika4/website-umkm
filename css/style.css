@@ -77,23 +77,34 @@ a:hover {
   margin-inline: auto;
 }
 
+/* ===== P06 Flexbox 1: navigasi (brand + daftar tautan) ===== */
+.nav {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  justify-content: space-between;
+}
+
 .brand {
   display: inline-block;
-  margin-bottom: var(--space-2);
+  margin-bottom: 0;
   color: var(--color-text);
   font-weight: 800;
   text-decoration: none;
 }
 
+/* ===== P06 Flexbox 2: daftar tautan navigasi ===== */
 .nav ul {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
 .nav li {
-  display: inline-block;
-  margin: 0 var(--space-2) var(--space-1) 0;
+  margin: 0;
 }
 
 .nav a {
@@ -119,11 +130,34 @@ a:hover {
   padding-block: var(--space-5);
 }
 
+/* ===== P06 Grid: hero (teks + gambar) ===== */
 .hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-4);
+  align-items: center;
   padding: var(--space-6);
   color: var(--color-surface);
   background: var(--color-primary);
   border-radius: var(--radius-lg);
+}
+
+/* ===== P06 Flexbox 3: isi teks hero ===== */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+/* hero tanpa gambar: teks memenuhi lebar */
+.hero-content:only-child {
+  grid-column: 1 / -1;
+}
+
+.hero-image {
+  width: 100%;
+  border-radius: var(--radius-md);
 }
 
 h1,
@@ -168,10 +202,12 @@ p {
 }
 
 .hero h1 {
+  margin: 0;
   color: var(--color-surface);
 }
 
 .hero p {
+  margin: 0;
   color: #f6f0e8;
 }
 
@@ -190,9 +226,15 @@ p {
 .hero img {
   width: 100%;
   height: auto;
-  margin-top: 24px;
+  margin: 0; /* jarak diatur gap Grid */
+  aspect-ratio: auto;
   border-radius: 14px;
   object-fit: contain;
+}
+
+.hero figure {
+  margin: 0;
+  align-self: center;
 }
 
 .hero figcaption {
@@ -263,23 +305,36 @@ th {
   background: var(--color-surface-soft);
 }
 
-/* ===== Product list & card — normal flow (flexbox) ===== */
-.product-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4);
-  margin-top: 28px;
+/* ===== P06 Grid: kartu produk dan galeri ===== */
+.product-grid,
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-4);
 }
 
+.gallery-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* spacing antar kartu hanya dari gap */
+.product-grid .product-card,
+.gallery-grid .media-card {
+  margin-block: 0;
+}
+
+/* ===== P06 Flexbox 4: isi kartu produk ===== */
 .product-card {
   display: flex;
   flex-direction: column;
-  width: calc(33.333% - var(--space-4));
-  padding: 20px;
+  gap: var(--space-2);
+  padding: var(--space-4);
 }
 
-.product-card h3 {
-  margin: 0 0 8px;
+.product-card h3,
+.product-card p {
+  margin: 0;
 }
 
 .product-card .price {
@@ -291,21 +346,40 @@ th {
   font-weight: 800;
 }
 
-/* ===== Gallery list & media card — normal flow (flexbox) ===== */
-.gallery-list {
+/* Badge: cukup flex item, tanpa positioning */
+.product-badge {
+  align-self: flex-start;
+  padding: 0.25rem var(--space-2);
+  color: var(--color-primary-strong);
+  font-size: 0.875rem;
+  font-weight: 800;
+  background: var(--color-accent);
+  border-radius: 999px;
+}
+
+/* ===== P06 Flexbox 5: tombol/tautan di kartu ===== */
+.card-actions {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+/* ===== P06 Flexbox 6: aksi form ===== */
+.form-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-4);
-  margin-top: 20px;
+  gap: var(--space-2);
+  align-items: center;
 }
 
 .media-card {
-  width: calc(50% - var(--space-4));
-  padding: 16px;
+  padding: var(--space-3);
 }
 
 .media-card img {
-  margin: 0 0 12px;
+  margin: 0 0 var(--space-2);
 }
 
 .media-card figcaption {
