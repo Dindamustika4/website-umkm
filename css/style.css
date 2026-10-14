@@ -44,8 +44,17 @@ body {
 }
 
 img {
+  display: block;
   max-width: 100%;
   height: auto;
+}
+
+.hero-image {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  border-radius: var(--radius-md);
 }
 
 a {
@@ -77,12 +86,11 @@ a:hover {
   margin-inline: auto;
 }
 
-/* ===== P06 Flexbox 1: navigasi (brand + daftar tautan) ===== */
 .nav {
   display: flex;
+  flex-direction: column;
   gap: var(--space-3);
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .brand {
@@ -93,9 +101,9 @@ a:hover {
   text-decoration: none;
 }
 
-/* ===== P06 Flexbox 2: daftar tautan navigasi ===== */
 .nav ul {
   display: flex;
+  flex-direction: column;
   gap: var(--space-2);
   flex-wrap: wrap;
   padding: 0;
@@ -130,10 +138,9 @@ a:hover {
   padding-block: var(--space-5);
 }
 
-/* ===== P06 Grid: hero (teks + gambar) ===== */
 .hero {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1fr;
   gap: var(--space-4);
   align-items: center;
   padding: var(--space-6);
@@ -142,7 +149,6 @@ a:hover {
   border-radius: var(--radius-lg);
 }
 
-/* ===== P06 Flexbox 3: isi teks hero ===== */
 .hero-content {
   display: flex;
   flex-direction: column;
@@ -150,7 +156,6 @@ a:hover {
   gap: var(--space-2);
 }
 
-/* hero tanpa gambar: teks memenuhi lebar */
 .hero-content:only-child {
   grid-column: 1 / -1;
 }
@@ -226,7 +231,7 @@ p {
 .hero img {
   width: 100%;
   height: auto;
-  margin: 0; /* jarak diatur gap Grid */
+  margin: 0;
   aspect-ratio: auto;
   border-radius: 14px;
   object-fit: contain;
@@ -288,6 +293,20 @@ table {
   border-radius: 0;
 }
 
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.table-scroll table {
+  min-width: 40rem;
+}
+
 caption {
   margin-bottom: var(--space-2);
   font-weight: 700;
@@ -305,26 +324,19 @@ th {
   background: var(--color-surface-soft);
 }
 
-/* ===== P06 Grid: kartu produk dan galeri ===== */
 .product-grid,
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: var(--space-3);
   margin-top: var(--space-4);
 }
 
-.gallery-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-/* spacing antar kartu hanya dari gap */
 .product-grid .product-card,
 .gallery-grid .media-card {
   margin-block: 0;
 }
 
-/* ===== P06 Flexbox 4: isi kartu produk ===== */
 .product-card {
   display: flex;
   flex-direction: column;
@@ -346,7 +358,6 @@ th {
   font-weight: 800;
 }
 
-/* Badge: cukup flex item, tanpa positioning */
 .product-badge {
   align-self: flex-start;
   padding: 0.25rem var(--space-2);
@@ -357,7 +368,6 @@ th {
   border-radius: 999px;
 }
 
-/* ===== P06 Flexbox 5: tombol/tautan di kartu ===== */
 .card-actions {
   display: flex;
   gap: var(--space-2);
@@ -366,7 +376,6 @@ th {
   margin-top: auto;
 }
 
-/* ===== P06 Flexbox 6: aksi form ===== */
 .form-actions {
   display: flex;
   flex-wrap: wrap;
@@ -417,10 +426,6 @@ button:hover {
   background: var(--color-accent-strong);
 }
 
-.table-wrap {
-  overflow-x: auto;
-}
-
 .skip-link {
   position: absolute;
   top: -5rem;
@@ -468,6 +473,7 @@ input[type="checkbox"] {
 }
 
 fieldset {
+  min-width: 0;
   margin: 0 0 var(--space-3);
   padding: var(--space-3);
   border: 1px solid var(--color-border);
@@ -511,8 +517,42 @@ button {
 }
 
 pre {
+  max-width: 100%;
   padding: 18px;
+  overflow-x: auto;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
+}
+
+@media (min-width: 42rem) {
+  .nav ul {
+    flex-direction: row;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 48rem) {
+  .hero {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 60rem) {
+  .nav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }

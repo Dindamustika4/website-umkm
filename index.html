@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -8,60 +9,76 @@
 </head>
 <body>
     <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+
     <header class="site-header">
         <nav class="nav" aria-label="Navigasi utama">
             <a class="brand" href="index.html">Kopi Kenangan</a>
             <ul>
                 <li><a aria-current="page" href="index.html">Beranda</a></li>
                 <li><a href="tentang.html">Tentang Kami</a></li>
-                 <li><a href="#profil">Profil Singkat</a></li>
+                <li><a href="#profil">Profil Singkat</a></li>
                 <li><a href="produk.html">Produk</a></li>
                 <li><a href="galeri.html">Galeri</a></li>
                 <li><a href="kontak.html">Kontak</a></li>
             </ul>
         </nav>
     </header>
+
     <main id="konten" class="page">
-       <section class="hero" aria-labelledby="hero-title">
-    <div class="hero-content">
-        <p class="eyebrow">UMKM Pekalongan</p>
-        <h1 id="hero-title">Kopi Kenangan</h1>
-        <p>Kopi lokal pilihan untuk teman belajar, bekerja, dan berdiskusi.</p>
-        <button id="promoButton" type="button">Lihat promo hari ini</button>
-    </div>
-    <figure class="hero-figure">
-        <img src="assets/images/etalase.png" alt="Mi Bangladesh dengan telur, kerupuk, dan es kopi Kenangan disajikan di atas tikar piknik" />
-        <figcaption>Produk unggulan Kopi Kenangan, siap menemani harimu.</figcaption>
-    </figure>
-</section>
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <p class="eyebrow">UMKM Pekalongan</p>
+                <h1 id="hero-title">Kopi Kenangan</h1>
+                <p>Kopi lokal pilihan untuk teman belajar, bekerja, dan berdiskusi.</p>
+                <button id="promoButton" type="button">Lihat promo hari ini</button>
+            </div>
 
-        <div class="product-list">
-            <article class="product-card">
-                <h3>Kopi Gula Aren</h3>
-                <p>Aroma karamel yang lebih kompleks dan alami dibanding penggunaan gula putih biasa.</p>
-                <p class="price">Rp16.000</p>
-            </article>
-            <article class="product-card">
-                <h3>Roti Bakar Cokelat Keju</h3>
-                <p>Roti bakar dengan perpaduan keju dan cokelat yang manis, gurih, dan lumer di setiap gigitan.</p>
-                <p class="price">Rp10.000</p>
-            </article>
-            <article class="product-card">
-                <h3>Mi Bangladesh</h3>
-                <p>Hidangan mi berkuah dengan cita rasa gurih, pedas, dan kaya rempah yang menggugah selera.</p>
-                <p class="price">Rp13.000</p>
-            </article>
-        </div>
-        
+            <figure class="hero-figure">
+                <img
+                    class="hero-image"
+                    src="assets/images/etalase.png"
+                    width="640"
+                    height="360"
+                    alt="Mi Bangladesh dengan telur, kerupuk, dan es kopi Kenangan disajikan di atas tikar piknik"
+                />
+                <figcaption>Produk unggulan Kopi Kenangan, siap menemani harimu.</figcaption>
+            </figure>
+        </section>
+
+        <section aria-labelledby="produk-unggulan-title">
+            <h2 id="produk-unggulan-title">Produk Unggulan</h2>
+
+            <div class="product-list">
+                <article class="product-card">
+                    <h3>Kopi Gula Aren</h3>
+                    <p>Aroma karamel yang lebih kompleks dan alami dibanding penggunaan gula putih biasa.</p>
+                    <p class="price">Rp16.000</p>
+                </article>
+
+                <article class="product-card">
+                    <h3>Roti Bakar Cokelat Keju</h3>
+                    <p>Roti bakar dengan perpaduan keju dan cokelat yang manis, gurih, dan lumer di setiap gigitan.</p>
+                    <p class="price">Rp10.000</p>
+                </article>
+
+                <article class="product-card">
+                    <h3>Mi Bangladesh</h3>
+                    <p>Hidangan mi berkuah dengan cita rasa gurih, pedas, dan kaya rempah yang menggugah selera.</p>
+                    <p class="price">Rp13.000</p>
+                </article>
+            </div>
+        </section>
+
         <section aria-labelledby="audio-title">
-  <h2 id="audio-title">Nada Penanda Kedai</h2>
+            <h2 id="audio-title">Nada Penanda Kedai</h2>
 
-  <audio controls aria-describedby="audio-note">
-    <source src="assets/audio/sound.mp3" type="audio/mpeg">
-  </audio>
+            <audio controls aria-describedby="audio-note">
+                <source src="assets/audio/sound.mp3" type="audio/mpeg">
+                Browser Anda tidak mendukung pemutaran audio.
+            </audio>
 
-  <p id="audio-note">Audio penanda kedai Kopi Kenangan.</p>
-</section>
+            <p id="audio-note">Audio penanda kedai Kopi Kenangan.</p>
+        </section>
 
         <section id="profil" aria-labelledby="profil-title">
             <h2 id="profil-title">Profil Singkat</h2>
@@ -72,9 +89,11 @@
             </p>
         </section>
     </main>
+
     <footer class="site-footer">
         <p>&copy; 2026 Kopi Kenangan. Data pada halaman ini bersifat dummy.</p>
     </footer>
+
     <script src="js/script.js"></script>
 </body>
 </html>
