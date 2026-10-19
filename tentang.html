@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="id">
 <head>
@@ -6,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tentang Kopi Kenangan - Website UMKM</title>
     <link rel="stylesheet" href="css/style.css" />
+    <script src="js/nav.js"></script>
 </head>
 <body>
     <a class="skip-link" href="#konten">Lewati ke konten utama</a>
@@ -13,7 +13,10 @@
     <header class="site-header">
         <nav class="nav" aria-label="Navigasi utama">
             <a class="brand" href="index.html">Kopi Kenangan</a>
-            <ul>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-utama" aria-label="Buka menu">
+                <span class="nav-toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul id="menu-utama">
                 <li><a href="index.html">Beranda</a></li>
                 <li><a aria-current="page" href="tentang.html">Tentang Kami</a></li>
                 <li><a href="index.html#profil">Profil Singkat</a></li>
@@ -42,7 +45,6 @@
                     src="assets/images/etalase.png"
                     width="640"
                     height="360"
-                    loading="lazy"
                     alt="Mi Bangladesh dengan telur, kerupuk, dan es kopi Kenangan disajikan di atas tikar piknik"
                 />
                 <figcaption>Produk unggulan Kopi Kenangan, siap menemani harimu.</figcaption>
