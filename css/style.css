@@ -70,8 +70,6 @@ a:hover {
   color: var(--color-primary-strong);
 }
 
-/* ---------- Header, footer, navigasi ---------- */
-
 .site-header,
 .site-footer {
   padding: var(--space-3) var(--space-4);
@@ -295,7 +293,7 @@ li {
   aspect-ratio: 16 / 9;
   object-fit: cover;
   object-position: center;
-  margin: 28px 0;
+  margin: var(--space-3) 0 var(--space-2);
   border-radius: 16px;
 }
 
@@ -316,6 +314,14 @@ li {
   color: #f6f0e8;
   font-size: 14px;
   text-align: center;
+}
+
+.page figure:not(.media-card) {
+  margin-block: 0;
+}
+
+.page figure:not(.media-card) figcaption {
+  margin-bottom: var(--space-3);
 }
 
 .page > section:not(.hero) {
@@ -498,6 +504,11 @@ th {
   color: #991b1b;
 }
 
+#produk-unggulan {
+  font-weight: 700;
+  color: var(--color-primary, #6f3b1f);
+}
+
 .button,
 button {
   display: inline-block;
@@ -544,8 +555,6 @@ button:hover {
   outline: 3px solid var(--color-focus);
   outline-offset: 3px;
 }
-
-/* ---------- Form ---------- */
 
 .field {
   margin-bottom: var(--space-3);
