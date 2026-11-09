@@ -1,14 +1,18 @@
 "use strict";
 
-console.log("P10 JavaScript aktif");
+console.log("P11 JavaScript aktif");
 
 const produkUmkm = [
-  { nama: "Paket Pelajar", kategori: "Paket Pelajar", harga: 26000, stok: 15, unggulan: false },
-  { nama: "Kopi Gula Aren", kategori: "Menu Satuan", harga: 16000, stok: 20, unggulan: true },
-  { nama: "Roti Bakar Cokelat Keju", kategori: "Menu Satuan", harga: 10000, stok: 12, unggulan: true },
-  { nama: "Mi Bangladesh", kategori: "Paket Nongkrong", harga: 13000, stok: 8, unggulan: true },
-  { nama: "Pizza Pepperoni", kategori: "Menu Satuan", harga: 7000, stok: 5, unggulan: false },
+  { nama: "Paket Pelajar", kategori: "Paket Pelajar", harga: 26000, stok: 15, unggulan: false, keterangan: "Isi: Kopi Gula Aren + Roti Bakar Cokelat Keju" },
+  { nama: "Kopi Gula Aren", kategori: "Minuman", harga: 16000, stok: 20, unggulan: true, keterangan: "1 gelas kopi dengan manis gula aren" },
+  { nama: "Roti Bakar Cokelat Keju", kategori: "Menu Satuan", harga: 10000, stok: 12, unggulan: true, keterangan: "1 porsi roti bakar cokelat keju" },
+  { nama: "Mi Bangladesh", kategori: "Paket Nongkrong", harga: 13000, stok: 8, unggulan: true, keterangan: "Isi: mi, telur, dan kerupuk, porsi untuk berdua" },
+  { nama: "Pizza Pepperoni", kategori: "Menu Satuan", harga: 7000, stok: 5, unggulan: false, keterangan: "1 potong pizza pepperoni" },
 ];
+
+const produkGrid = document.querySelector("#produk-grid");
+const produkStatus = document.querySelector("#produk-status");
+const tombolFilter = document.querySelectorAll("[data-filter]");
 
 function formatRupiah(nilai) {
   return new Intl.NumberFormat("id-ID", {
@@ -28,42 +32,78 @@ function statusStok(stok) {
   }
 }
 
-function buatKartuProduk(produk) {
-  const status = statusStok(produk.stok);
+function buatElemenProduk(produk) {
+  const card = document.createElement("article");
+  card.classList.add("js-product-card");
 
-  return `
-    <article class="js-product-card">
-      <h3>${produk.nama}</h3>
-      <p class="category-note">${produk.kategori}</p>
-      <p class="price">${formatRupiah(produk.harga)}</p>
-      <span class="stock-badge ${status.className}">${status.label}</span>
-    </article>
-  `;
+  const title = document.createElement("h3");
+  title.textContent = produk.nama;
+
+  const category = document.createElement("p");
+  category.classList.add("category-note");
+  category.textContent = produk.kategori;
+
+  const note = document.createElement("p");
+  note.textContent = produk.keterangan;
+
+  const price = document.createElement("p");
+  price.classList.add("price");
+  price.textContent = formatRupiah(produk.harga);
+
+  const stock = document.createElement("span");
+  const status = statusStok(produk.stok);
+  stock.classList.add("stock-badge");
+  if (status.className) {
+    stock.classList.add(status.className);
+  }
+  stock.textContent = status.label;
+
+  card.append(title, category, note, price, stock);
+  return card;
 }
 
-function renderProduk() {
-  const grid = document.querySelector("#produk-dinamis");
-  const ringkasan = document.querySelector("#produk-ringkasan");
-  const unggulan = document.querySelector("#produk-unggulan");
+function buatEmptyState(kategori) {
+  const empty = document.createElement("p");
+  empty.classList.add("empty-state");
+  empty.textContent = `Belum ada produk pada kategori ${kategori}.`;
+  return empty;
+}
 
-  if (!grid || !ringkasan || !unggulan) {
+function renderProduk(kategoriAktif = "Semua") {
+  if (!produkGrid || !produkStatus) {
+    console.warn("Target render produk tidak ditemukan.");
     return;
   }
 
-  const produkTersedia = produkUmkm.filter((produk) => produk.stok > 0);
-  const produkUnggulan = produkUmkm.find((produk) => produk.unggulan === true);
-  const markupProduk = produkTersedia.map(buatKartuProduk).join("");
+  const produkTampil = kategoriAktif === "Semua"
+    ? produkUmkm
+    : produkUmkm.filter((produk) => produk.kategori === kategoriAktif);
 
-  produkUmkm.forEach((produk) => {
-    console.log("Debug produk:", produk.nama, "stok:", produk.stok, "harga:", formatRupiah(produk.harga));
+  produkGrid.replaceChildren();
+
+  if (produkTampil.length === 0) {
+    produkGrid.append(buatEmptyState(kategoriAktif));
+    produkStatus.textContent = "0 produk ditemukan.";
+    return;
+  }
+
+  produkTampil.forEach((produk) => {
+    produkGrid.append(buatElemenProduk(produk));
   });
-  console.table(produkUmkm);
 
-  grid.innerHTML = markupProduk;
-  ringkasan.textContent = `${produkTersedia.length} produk tersedia dari ${produkUmkm.length} data.`;
-  unggulan.textContent = produkUnggulan
-    ? `Produk unggulan: ${produkUnggulan.nama}`
-    : "Belum ada produk unggulan.";
+  produkStatus.textContent = `${produkTampil.length} produk ditampilkan.`;
 }
 
-document.addEventListener("DOMContentLoaded", renderProduk);
+tombolFilter.forEach((tombol) => {
+  tombol.addEventListener("click", (event) => {
+    const tombolAktif = event.currentTarget;
+    const kategori = tombolAktif.dataset.filter;
+
+    tombolFilter.forEach((item) => item.classList.remove("is-active"));
+    tombolAktif.classList.add("is-active");
+
+    renderProduk(kategori);
+  });
+});
+
+renderProduk();
